@@ -1,4 +1,13 @@
 /* General Styles */
+:root {
+    --primary-color: #6200EA;
+    --secondary-color: #3700B3;
+    --background-color: #1f1f1f;
+    --text-color: #E0E0E0;
+    --border-color: #555;
+    --hover-color: #888;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -6,11 +15,11 @@ body {
     justify-content: center;
     gap: 20px;
     font-family: 'Roboto', sans-serif;
-    background-color: #121212;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     height: 100vh;
-    color: #E0E0E0;
+    color: var(--text-color);
 }
 
 img {
@@ -23,7 +32,7 @@ form {
     max-width: 600px;
     margin: auto;
     padding: 50px;
-    background-color: #1f1f1f;
+    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -52,11 +61,11 @@ input, select, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    border: 2px solid #555;
+    border: 2px solid var(--border-color);
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #242424;
-    color: #E0E0E0;
+    color: var(--text-color);
 }
 
 label {
@@ -64,18 +73,19 @@ label {
     padding: 0px;
     margin-bottom: 50px;
     box-sizing: border-box;
-    color: #E0E0E0;
+    color: var(--text-color);
 }
 
 button {
-    background-color: #6200EA;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #3700B3;
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 /* Table Styles */
@@ -89,17 +99,16 @@ table {
     width: 95%;
     margin: 50px auto;
     border-collapse: collapse;
-    background-color: #1f1f1f;
+    background-color: var(--background-color);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 table, th, td {
     box-sizing: border-box;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
 }
 
 thead th {
-    
     position: sticky;
     top: 0;
     background-color: #242424;
@@ -119,11 +128,12 @@ th {
 
 tr:hover {
     background-color: #2e2e2e;
+    transition: background-color 0.5s ease;
 }
 
 /* Error Styles */
 .error-container {
-    background-color: #1f1f1f;
+    background-color: var(--background-color);
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -147,40 +157,39 @@ tr:hover {
 .error-container a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #6200EA;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.5s;
 }
 
 .error-container a:hover {
-    background-color: #3700B3;
+    background-color: var(--secondary-color);
 }
-
-
 
 /* Webkit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 10px; /* Width of the scrollbar */
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1f1f1f; /* Color of the track */
-    border-radius: 5px; /* Roundness of the track */
+    background: var(--background-color);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #555; /* Color of the scroll thumb */
-    border-radius: 5px; /* Roundness of the scroll thumb */
+    background: var(--border-color);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #888; /* Color of the scroll thumb on hover */
+    background: var(--hover-color);
+    transition: background-color 0.5s ease;
 }
 
 /* Firefox */
 * {
-    scrollbar-width: thin; /* Width of the scrollbar */
-    scrollbar-color: #555 #1f1f1f; /* thumb and track color */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--background-color);
 }

@@ -2,8 +2,8 @@
 // MODULE IMPORTS
 // ==========================
 const fs = require('fs');
-const path = require('path');
 const express = require('express');
+const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const multer = require('multer');
 const passport = require('passport');
@@ -36,7 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware to parse incoming POST data
 app.use(express.urlencoded({ extended: true }));
 
-function
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
