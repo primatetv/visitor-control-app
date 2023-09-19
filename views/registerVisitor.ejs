@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register Visitor</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Additional styles */
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fields-container,
+        .photo-container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #webcam,
+        #capturedImage {
+            max-width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="visitorForm" action="/register-visitor" method="post">
+        <div class="form-container">
+            <!-- Fields Container -->
+            <div class="fields-container">
+                <label for="rut_dni">RUT or DNI:</label>
+                <input type="text" name="rut_dni" required>
+                <br>
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+                <br>
+                <label for="surname">Surname:</label>
+                <input type="text" name="surname" required>
+                <br>
+                <label for="host_name">Name of the host:</label>
+                <input type="text" name="host_name" required>
+                <br>
+                <label for="host_apartment_number">Host apartment number:</label>
+                <input type="text" name="host_apartment_number" required>
+                <br>
+                <label for="license_plate">License Plate:</label>
+                <input type="text" name="license_plate">
+                <br>
+                <label for="visit_type">Type of visit:</label>
+                <select name="visit_type">
+                    <option value="Family">Family</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Delivery">Delivery</option>
+                </select>
+                <br>
+                <button type="submit" id="submitBtn" disabled>Register</button>
+            </div>
+
+            <!-- Photo Container -->
+            <div class="photo-container">
+                <video id="webcam" width="320" height="240" autoplay></video>
+                <canvas id="captureCanvas" width="320" height="240" style="display:none;"></canvas>
+                <button type="button" id="captureBtn">Capture Image</button>
+                <img id="capturedImage" src="" alt="Captured Image" style="display:none; margin-top: 10px;">
+            </div>
+        </div>
+    </form>
+    <script language="JavaScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const webcamElement = document.getElementById('webcam');
+            const canvasElement = document.getElementById('captureCanvas');
+            const captureBtn = document.getElementById('captureBtn');
+            const capturedImageElement = document.getElementById('capturedImage');
+            const submitBtn = document.getElementById('submitBtn');
+    
+            // Access the webcam
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    webcamElement.srcObject = stream;
+                })
+                .catch(err => {
+                    console.error('Error accessing the webcam', err);
+                });
+    
+            // Capture the image to canvas and display it
+            captureBtn.addEventListener('click', function() {
+                const context = canvasElement.getContext('2d');
+                context.drawImage(webcamElement, 0, 0, canvasElement.width, canvasElement.height);
+                const base64String = canvasElement.toDataURL('image/jpeg');
+    
+                // Display the captured image and enable the submit button
+                capturedImageElement.src = base64String;
+                capturedImageElement.style.display = 'block';
+                submitBtn.disabled = false;
+            });
+
+            document.getElementById('visitorForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                canvasElement.toBlob(function(blob) {
+                    const formData = new FormData();
+                    formData.append('picture', blob, 'captured-image.jpg');
+                    formData.append('rut_dni', document.querySelector('[name="rut_dni"]').value);
+                    formData.append('name', document.querySelector('[name="name"]').value);
+                    formData.append('surname', document.querySelector('[name="surname"]').value);
+                    formData.append('host_name', document.querySelector('[name="host_name"]').value);
+                    formData.append('host_apartment_number', document.querySelector('[name="host_apartment_number"]').value);
+                    formData.append('license_plate', document.querySelector('[name="license_plate"]').value);
+                    formData.append('visit_type', document.querySelector('[name="visit_type"]').value);
+
+                    fetch('/register-visitor', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json()).then(data => {
+                        if (data.success) {
+                            window.location.href = '/visitors-log';
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+                }, 'image/jpeg');
+            });
+        });
+    </script>
+</body>
+</html>

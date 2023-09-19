@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitors Log</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>RUT/DNI</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Host Name</th>
+                    <th>Apartment Number</th>
+                    <th>Picture</th>
+                    <th>License Plate</th>
+                    <th>Visit Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% visitors.forEach(visitor => { %>
+                    <tr>
+                        <td><%= visitor.rut_dni %></td>
+                        <td><%= visitor.name %></td>
+                        <td><%= visitor.surname %></td>
+                        <td><%= visitor.host_name %></td>
+                        <td><%= visitor.host_apartment_number %></td>
+                        <td><img src="<%= visitor.picture_path %>" alt="Visitor Picture" width="200"></td>
+                        <td><%= visitor.license_plate %></td>
+                        <td><%= visitor.visit_type %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+</body>
+</html>
