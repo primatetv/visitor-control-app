@@ -112,7 +112,7 @@ app.get('/', (req, res) => {
                 res.redirect('/admin-dashboard');
                 break;
             case 'guard':
-                res.redirect('/visitors-log');
+                res.redirect('/register-visitor');
                 break;
             default:
                 res.redirect('/login');
