@@ -155,7 +155,10 @@ app.get('/admin-dashboard', checkRole('building_admin'), (req, res) => {
     const adminBuildingId = req.user.building_id; // Assuming each admin is associated with a building
     db.all("SELECT * FROM visitors WHERE building_id = ?", [adminBuildingId], (err, visitors) => {
         if (err) throw err;
-        res.render('adminDashboard', { visitors: visitors });
+        res.render('adminDashboard', { 
+            visitors: visitors,
+            user: req.user
+        });
     });
 });
 
