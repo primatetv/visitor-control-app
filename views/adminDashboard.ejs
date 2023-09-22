@@ -7,7 +7,6 @@
     <body>
         <header>
             <h1>Your Dashboard Name</h1>
-            <p>Welcome, <%= req.user.username %></p>
             <nav>
                 <ul>
                     <li><a href="/root-dashboard">Root Dashboard</a></li>
@@ -16,6 +15,7 @@
                 </ul>
             </nav>
         </header>
+        <p>Welcome, <%= req.user.username %></p>
         <h2>Create New Guard</h2>
     <!-- Form to create new guard -->
     <form action="/create-guard" method="post">
