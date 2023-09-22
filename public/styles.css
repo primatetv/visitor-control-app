@@ -193,3 +193,21 @@ tr:hover {
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) var(--background-color);
 }
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: #E0E0E0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #6200EA;
+}
