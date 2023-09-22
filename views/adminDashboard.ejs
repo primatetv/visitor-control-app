@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <header>
-        <h1>Your Dashboard Name</h1>
-        <p>Welcome, <%= req.user.password %></p>
-        <nav>
-            <ul>
-                <li><a href="/root-dashboard">Root Dashboard</a></li>
-                <li><a href="/admin-dashboard">Admin Dashboard</a></li>
-                <!-- Add more links as needed -->
-            </ul>
-        </nav>
-    </header>
-<body>
-    <h2>Create New Guard</h2>
+    <head>
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Your Dashboard Name</h1>
+            <p>Welcome, <%= req.user.username %></p>
+            <nav>
+                <ul>
+                    <li><a href="/root-dashboard">Root Dashboard</a></li>
+                    <li><a href="/admin-dashboard">Admin Dashboard</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </nav>
+        </header>
+        <h2>Create New Guard</h2>
     <!-- Form to create new guard -->
     <form action="/create-guard" method="post">
         <!-- Fields for guard details -->
