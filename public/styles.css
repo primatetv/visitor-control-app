@@ -195,7 +195,7 @@ tr:hover {
 }
 
 header {
-    background-color: #007BFF; /* Blue color */
+    background-color: #162e47; /* Blue color */
     color: #fff; /* White text */
     padding: 10px 20px;
     display: flex;
@@ -204,12 +204,15 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000; /* Ensure the header stays on top */
+    width: 100%; /* Ensure the header spans the full width */
 }
 
 .header-content {
     display: flex;
     align-items: center;
     gap: 20px;
+    width: 100%; /* Take up the full width of the header */
+    justify-content: space-between; /* Push the title and navigation apart */
 }
 
 header h1 {
