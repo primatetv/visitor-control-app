@@ -6,15 +6,18 @@
     </head>
     <body>
         <header>
-            <h1>Your Dashboard Name</h1>
-            <nav>
-                <ul>
-                    <li><a href="/root-dashboard">Root Dashboard</a></li>
-                    <li><a href="/admin-dashboard">Admin Dashboard</a></li>
-                    <!-- Add more links as needed -->
-                </ul>
-            </nav>
+            <div class="header-content">
+                <h1>Your Dashboard Name</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/root-dashboard">Root Dashboard</a></li>
+                        <!-- Add other navigation links as needed -->
+                    </ul>
+                </nav>
+            </div>
+            <p>Welcome, <%= user.username %></p>
         </header>
+        
         <p>Welcome, <%= req.user.username %></p>
         <h2>Create New Guard</h2>
     <!-- Form to create new guard -->

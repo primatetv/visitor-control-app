@@ -194,20 +194,49 @@ tr:hover {
     scrollbar-color: var(--border-color) var(--background-color);
 }
 
+header {
+    background-color: #007BFF; /* Blue color */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure the header stays on top */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    gap: 10px;
+}
+
+nav li {
+    margin: 0;
 }
 
 nav a {
-    color: #E0E0E0;
     text-decoration: none;
-    transition: color 0.3s;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.1); /* Slight transparency to the black color */
+    transition: background-color 0.3s;
 }
 
 nav a:hover {
-    color: #6200EA;
+    background-color: rgba(0, 0, 0, 0.2);
 }
