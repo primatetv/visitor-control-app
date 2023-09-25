@@ -5,44 +5,45 @@
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-    <header>
-        <h1>Log Visitas</h1>
-        <nav>
-            <ul>
-                <li><a href="/register-visitor">Formulario de registro</a></li>
-                <li><a href="/logout">Salir</a></li>
-                <!-- Add more links as needed -->
-            </ul>
-        </nav>
-    </header>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>RUT/DNI</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Nombre Res.</th>
-                    <th>Dep. Residente</th>
-                    <th>Imagen</th>
-                    <th>Placa Patente</th>
-                    <th>Tipo de Visita</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% visitors.forEach(visitor => { %>
+        <header>
+            <h1>Log Visitas</h1>
+            <nav>
+                <ul>
+                    <li><a href="/register-visitor">Formulario de registro</a></li>
+                    <li><a href="/logout">Salir</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </nav>
+        </header>
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <td><%= visitor.rut_dni %></td>
-                        <td><%= visitor.name %></td>
-                        <td><%= visitor.surname %></td>
-                        <td><%= visitor.host_name %></td>
-                        <td><%= visitor.host_apartment_number %></td>
-                        <td><img src="<%= visitor.picture_path %>" alt="Visitor Picture" width="200"></td>
-                        <td><%= visitor.license_plate %></td>
-                        <td><%= visitor.visit_type %></td>
+                        <th>RUT/DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nombre Res.</th>
+                        <th>Dep. Residente</th>
+                        <th>Imagen</th>
+                        <th>Placa Patente</th>
+                        <th>Tipo de Visita</th>
                     </tr>
-                <% }); %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% visitors.forEach(visitor => { %>
+                        <tr>
+                            <td><%= visitor.rut_dni %></td>
+                            <td><%= visitor.name %></td>
+                            <td><%= visitor.surname %></td>
+                            <td><%= visitor.host_name %></td>
+                            <td><%= visitor.host_apartment_number %></td>
+                            <td><img src="<%= visitor.picture_path %>" alt="Visitor Picture" width="200"></td>
+                            <td><%= visitor.license_plate %></td>
+                            <td><%= visitor.visit_type %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
 </body>
 </html>
